@@ -183,33 +183,169 @@
       <div class="mt-8 rounded-3xl border border-[#FFC62F] bg-[#fffdf7] p-6 shadow-md">
         <h2 class="text-2xl font-semibold text-[#4F2683]">Field Goal Challenge</h2>
         <p class="mt-2 text-sm text-[#3b2b5a]">
-          Click the button to kick the ball through the uprights and score a point.
+          Wait for the perfect moment, then kick the ball through the uprights.
         </p>
 
-        <div x-data="{ score: 0, message: 'Ready to kick?' }" class="mt-4">
+        <div
+          x-data="{
+            score: 0,
+            message: 'Ready to kick?',
+            phase: 'idle',
+            kickButtonText: 'Start Kick',
+            canKick: false,
+            startTime: 0,
+            targetDelay: 0,
+            countdown: 0,
+            kickResult: 'neutral',
+            ballX: 84,
+            ballY: 118,
+            countdownPercent: 0,
+            animateBallInterval: null,
+            startKick() {
+              this.phase = 'counting';
+              this.message = 'Wait for the right moment...';
+              this.kickButtonText = 'Waiting...';
+              this.canKick = false;
+              this.kickResult = 'neutral';
+              this.startTime = Date.now();
+              this.targetDelay = 1200 + Math.floor(Math.random() * 1400);
+              this.countdown = 0;
+              this.countdownPercent = 0;
+              this.ballX = 84;
+              this.ballY = 118;
+              if (this.animateBallInterval) {
+                clearInterval(this.animateBallInterval);
+              }
+              this.animateBallInterval = setInterval(() => {
+                const elapsed = Date.now() - this.startTime;
+                this.countdown = Math.round(elapsed / 100) / 10;
+                this.countdownPercent = Math.min(100, Math.round((elapsed / this.targetDelay) * 100));
+                if (this.phase !== 'counting' && this.phase !== 'ready') {
+                  clearInterval(this.animateBallInterval);
+                  this.animateBallInterval = null;
+                  return;
+                }
+                this.ballX = Math.min(240, 84 + elapsed / 12);
+                this.ballY = 118 + Math.sin((this.ballX - 84) / 18) * 12;
+              }, 40);
+              const interval = setInterval(() => {
+                const elapsed = Date.now() - this.startTime;
+                this.countdown = Math.round(elapsed / 100) / 10;
+                this.countdownPercent = Math.min(100, Math.round((elapsed / this.targetDelay) * 100));
+                if (this.phase !== 'counting') {
+                  clearInterval(interval);
+                }
+              }, 100);
+              setTimeout(() => {
+                this.phase = 'ready';
+                this.message = 'Now! Kick at the right time!';
+                this.kickButtonText = 'Kick Now';
+                this.canKick = true;
+              }, this.targetDelay);
+            },
+            attemptKick() {
+              if (!this.canKick) return;
+              const elapsed = Date.now() - this.startTime;
+              const window = 250;
+              if (elapsed >= this.targetDelay - window && elapsed <= this.targetDelay + window) {
+                this.score += 1;
+                this.message = 'Perfect kick! You scored!';
+                this.kickResult = 'good';
+              } else if (elapsed < this.targetDelay - window) {
+                this.message = 'Too early! The kick missed wide.';
+                this.kickResult = 'no-good';
+              } else {
+                this.message = 'Too late! The ball sailed past the post.';
+                this.kickResult = 'no-good';
+              }
+              this.phase = 'finished';
+              this.canKick = false;
+              this.kickButtonText = 'Try Again';
+              if (this.animateBallInterval) {
+                clearInterval(this.animateBallInterval);
+                this.animateBallInterval = null;
+              }
+            },
+            resetGame() {
+              this.phase = 'idle';
+              this.message = 'Ready to kick?';
+              this.kickButtonText = 'Start Kick';
+              this.canKick = false;
+              this.kickResult = 'neutral';
+              this.countdown = 0;
+              this.countdownPercent = 0;
+              this.ballX = 84;
+              this.ballY = 118;
+              if (this.animateBallInterval) {
+                clearInterval(this.animateBallInterval);
+                this.animateBallInterval = null;
+              }
+            }
+          }"
+          class="mt-4"
+        >
           <div class="rounded-2xl border border-[#4F2683] bg-gradient-to-b from-[#4F2683] to-[#2d1358] p-4 text-white">
             <div class="flex items-center justify-between text-sm">
               <span>Vikings Score</span>
               <span class="font-bold" x-text="score"></span>
             </div>
+
             <div class="mt-4 rounded-xl border border-[#FFC62F] bg-[#f7f0ff] p-4 text-center text-[#4F2683]">
               <p class="text-sm font-semibold uppercase tracking-[0.2em]">Kick Result</p>
               <p class="mt-2 text-lg font-bold" x-text="message"></p>
+              <p class="mt-1 text-sm" x-show="phase === 'counting'" x-text="'Waited ' + countdown.toFixed(1) + 's'"></p>
+            </div>
+
+            <div class="mt-4 rounded-2xl border border-[#FFC62F] bg-[#f7f0ff] p-3">
+              <div class="mb-3 h-2 rounded-full bg-[#e3d8f6]">
+                <div class="h-2 rounded-full bg-[#4F2683] transition-all duration-100" :style="'width: ' + countdownPercent + '%'" ></div>
+              </div>
+              <svg viewBox="0 0 320 180" class="w-full h-40">
+                <rect x="0" y="0" width="320" height="180" rx="16" fill="#2f7d32" />
+                <rect x="0" y="120" width="320" height="60" fill="#4caf50" />
+                <rect x="40" y="72" width="8" height="70" fill="#f5f5f5" />
+                <rect x="40" y="64" width="110" height="8" fill="#f5f5f5" />
+                <rect x="170" y="58" width="6" height="56" fill="#f5f5f5" />
+                <rect x="188" y="58" width="6" height="56" fill="#f5f5f5" />
+                <rect x="206" y="58" width="6" height="56" fill="#f5f5f5" />
+                <rect x="232" y="36" width="8" height="82" fill="#f5f5f5" />
+                <circle cx="238" cy="40" r="8" fill="#ffc62f" />
+                <circle cx="100" cy="120" r="16" fill="#ffffff" />
+                <circle cx="100" cy="120" r="10" fill="#4f2683" />
+                <path d="M70 126 L94 118 L112 126" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+                <rect x="90" y="80" width="20" height="28" rx="6" fill="#4f2683" />
+                <circle cx="100" cy="74" r="12" fill="#f5c8a7" />
+                <rect x="90" y="92" width="8" height="24" fill="#4f2683" />
+                <rect x="108" y="92" width="8" height="24" fill="#4f2683" />
+                <rect x="94" y="116" width="4" height="18" fill="#4f2683" />
+                <rect x="112" y="116" width="4" height="18" fill="#4f2683" />
+                <circle :cx="ballX" :cy="ballY" r="12" fill="#ffffff" />
+                <circle :cx="ballX" :cy="ballY" r="8" fill="#4F2683" />
+                <circle x="250" y="90" r="20" fill="#ffffff" />
+                <text x="250" y="96" text-anchor="middle" font-size="20" fill="#4F2683" x-show="kickResult === 'good'">✓</text>
+                <text x="250" y="96" text-anchor="middle" font-size="20" fill="#c0392b" x-show="kickResult === 'no-good'">✕</text>
+              </svg>
             </div>
           </div>
 
-          <div class="mt-4 flex items-center gap-3">
+          <div class="mt-4 flex flex-wrap items-center gap-3">
             <button
-              @click="score += 1; message = 'Great kick! You scored!';"
+              @click="startKick()"
               class="bg-[#FFC62F] hover:bg-[#e6b427] text-[#4F2683] font-semibold px-5 py-2 rounded-lg shadow transition"
+              x-text="kickButtonText"
+            ></button>
+            <button
+              @click="attemptKick()"
+              :disabled="!canKick"
+              class="border border-[#4F2683] text-[#4F2683] font-semibold px-4 py-2 rounded-lg transition disabled:opacity-50"
             >
-              <i class="fa-solid fa-football"></i> Kick the Ball
+              Kick Now
             </button>
             <button
-              @click="message = 'Missed the kick. Try again!';"
+              @click="resetGame()"
               class="border border-[#4F2683] text-[#4F2683] font-semibold px-4 py-2 rounded-lg transition"
             >
-              Reset Try
+              Reset
             </button>
           </div>
         </div>
