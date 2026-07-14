@@ -62,39 +62,47 @@
 
   <!-- The classes below set the gradient background and center the card. -->
   <body
-    class="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 flex justify-center items-start p-4"
+    class="min-h-screen bg-gradient-to-br from-[#4F2683] via-[#5E3DA8] to-[#FFC62F] flex justify-center items-start p-4"
   >
-    <main class="bg-white w-full max-w-2xl my-12 p-10 rounded-2xl shadow-2xl">
+    <main class="bg-[#f8f2ff] w-full max-w-2xl my-12 p-10 rounded-2xl shadow-2xl">
       <!-- ▼▼▼ START EDITING HERE ▼▼▼ -->
 
-      <h1 class="text-4xl font-extrabold text-gray-900">
+      <h1 class="text-4xl font-extrabold text-white">
         Hi, I'm [Your Name] <span class="inline-block">👋</span>
       </h1>
-      <p class="text-lg text-gray-500 mt-1">
+      <p class="text-lg text-[#ece0ff] mt-1">
         A future developer learning Git, GitHub, and Copilot.
       </p>
+      <div class="mt-6 rounded-3xl border border-[#FFC62F] bg-white/80 p-4 shadow-sm">
+        <p class="font-semibold text-[#4F2683]">Minnesota Vikings colors:</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="rounded-full bg-[#4F2683] px-3 py-1 text-sm font-semibold text-white">Vikings Purple</span>
+          <span class="rounded-full bg-[#FFC62F] px-3 py-1 text-sm font-semibold text-[#4F2683]">Gold</span>
+          <span class="rounded-full bg-[#ffffff] px-3 py-1 text-sm font-semibold text-[#4F2683]">White</span>
+        </div>
+      </div>
 
-      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-purple-400">
+      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-[#FFC62F] text-[#4F2683]">
         About Me
       </h2>
-      <p class="mt-3 text-gray-700">
+      <p class="mt-3 text-[#3b2b5a]">
         Write a sentence or two about yourself here. What school do you go to?
         What got you interested in tech?
       </p>
 
-      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-purple-400">
+      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-[#FFC62F] text-[#4F2683]">
         Things I'm Into
       </h2>
-      <ul class="mt-3 space-y-1 text-gray-700 list-disc list-inside">
+      <ul class="mt-3 space-y-1 text-[#3b2b5a] list-disc list-inside">
         <li>Change these to your own interests</li>
         <li>Video games, art, sports, music — anything!</li>
         <li>Add or remove list items as you like</li>
       </ul>
 
-      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-purple-400">
+      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-[#FFC62F] text-[#4F2683]">
         What I'm Learning
       </h2>
-      <p class="mt-3 text-gray-700">
+      <p class="mt-3 text-[#3b2b5a]">
         Right now I'm learning how developers build and share software with
         GitHub. This page is proof — I wrote it and published it myself!
       </p>
@@ -107,19 +115,19 @@
       <div x-data="{ waves: 0 }" class="mt-8">
         <button
           @click="waves++"
-          class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition"
+          class="bg-[#FFC62F] hover:bg-[#e6b427] text-[#4F2683] font-semibold px-5 py-2 rounded-lg shadow transition"
         >
           <i class="fa-solid fa-hand"></i> Wave at me
         </button>
-        <span x-show="waves > 0" class="ml-3 text-gray-600">
+        <span x-show="waves > 0" class="ml-3 text-[#3b2b5a]">
           Thanks for the <span x-text="waves"></span> wave(s)! 👋
         </span>
       </div>
 
       <!-- ▲▲▲ STOP EDITING HERE (or keep going — it's your page!) ▲▲▲ -->
 
-      <footer class="mt-10 text-center text-sm text-gray-400">
-        Built with <i class="fa-solid fa-heart text-purple-400"></i> during the
+      <footer class="mt-10 text-center text-sm text-[#4f2683]">
+        Built with <i class="fa-solid fa-heart text-[#FFC62F]"></i> during the
         Tech Journey course.
       </footer>
     </main>
