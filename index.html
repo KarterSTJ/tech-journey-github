@@ -62,42 +62,60 @@
 
   <!-- The classes below set the gradient background and center the card. -->
   <body
-    class="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 flex justify-center items-start p-4"
+    class="min-h-screen bg-[radial-gradient(circle_at_top_left,_#4b2e83,_#0f172a_55%,_#111827)] flex justify-center items-start p-4"
   >
-    <main class="bg-white w-full max-w-2xl my-12 p-10 rounded-2xl shadow-2xl">
+    <main class="bg-[#111827] text-white w-full max-w-3xl my-12 p-8 md:p-10 rounded-3xl shadow-[0_20px_80px_rgba(0,0,0,0.35)] border border-[#f2c75c]/40">
       <!-- ▼▼▼ START EDITING HERE ▼▼▼ -->
 
-      <h1 class="text-4xl font-extrabold text-gray-900">
-        Hi, I'm [Your Name] <span class="inline-block">👋</span>
-      </h1>
-      <p class="text-lg text-gray-500 mt-1">
-        A future developer learning Git, GitHub, and Copilot.
-      </p>
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/4/48/Minnesota_Vikings_logo.svg"
+          alt="Minnesota Vikings logo"
+          class="w-24 h-24 md:w-32 md:h-32 object-contain"
+        />
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#f2c75c]">
+            Skol, Vikings!
+          </p>
+          <h1 class="text-4xl font-black text-white">
+            Hi, I'm Karter Strahl <span class="inline-block">🛡️</span>
+          </h1>
+          <p class="mt-2 text-lg text-gray-300">
+            A huge Minnesota Vikings fan and a future developer learning Git,
+            GitHub, and Copilot.
+          </p>
+        </div>
+      </div>
 
-      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-purple-400">
-        About Me
-      </h2>
-      <p class="mt-3 text-gray-700">
-        Write a sentence or two about yourself here. What school do you go to?
-        What got you interested in tech?
-      </p>
+      <div class="mt-8 rounded-2xl border border-[#f2c75c]/30 bg-gradient-to-r from-[#4b2e83]/80 to-[#0f172a]/90 p-6">
+        <h2 class="text-2xl font-semibold pb-1 border-b-4 border-[#f2c75c]">
+          About Me
+        </h2>
+        <p class="mt-3 text-gray-200">
+          I’m all about football, teamwork, and cheering on the Vikings every
+          Sunday. I’m also excited to keep building my skills in tech and
+          creating cool things online.
+        </p>
+      </div>
 
-      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-purple-400">
-        Things I'm Into
-      </h2>
-      <ul class="mt-3 space-y-1 text-gray-700 list-disc list-inside">
-        <li>Change these to your own interests</li>
-        <li>Video games, art, sports, music — anything!</li>
-        <li>Add or remove list items as you like</li>
-      </ul>
+      <div class="grid md:grid-cols-2 gap-4 mt-6">
+        <div class="rounded-2xl bg-[#1f2937] p-5 border border-gray-700">
+          <h3 class="text-xl font-semibold text-[#f2c75c]">Things I'm Into</h3>
+          <ul class="mt-3 space-y-2 text-gray-300 list-disc list-inside">
+            <li>Minnesota Vikings football</li>
+            <li>Sports, music, and gaming</li>
+            <li>Learning how to build websites</li>
+          </ul>
+        </div>
 
-      <h2 class="text-2xl font-semibold mt-8 pb-1 border-b-4 border-purple-400">
-        What I'm Learning
-      </h2>
-      <p class="mt-3 text-gray-700">
-        Right now I'm learning how developers build and share software with
-        GitHub. This page is proof — I wrote it and published it myself!
-      </p>
+        <div class="rounded-2xl bg-[#1f2937] p-5 border border-gray-700">
+          <h3 class="text-xl font-semibold text-[#f2c75c]">What I'm Learning</h3>
+          <p class="mt-3 text-gray-300">
+            Right now I’m learning how developers use GitHub to share their work
+            and grow their skills.
+          </p>
+        </div>
+      </div>
 
       <!--
         A little interactive button, powered by Alpine.js.
@@ -107,19 +125,19 @@
       <div x-data="{ waves: 0 }" class="mt-8">
         <button
           @click="waves++"
-          class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition"
+          class="bg-[#f2c75c] hover:bg-[#ffdf7f] text-[#111827] font-semibold px-5 py-2 rounded-lg shadow transition"
         >
-          <i class="fa-solid fa-hand"></i> Wave at me
+          <i class="fa-solid fa-football"></i> Give a Viking cheer
         </button>
-        <span x-show="waves > 0" class="ml-3 text-gray-600">
-          Thanks for the <span x-text="waves"></span> wave(s)! 👋
+        <span x-show="waves > 0" class="ml-3 text-gray-300">
+          Skol! That was <span x-text="waves"></span> cheer(s)! 🛡️
         </span>
       </div>
 
       <!-- ▲▲▲ STOP EDITING HERE (or keep going — it's your page!) ▲▲▲ -->
 
-      <footer class="mt-10 text-center text-sm text-gray-400">
-        Built with <i class="fa-solid fa-heart text-purple-400"></i> during the
+      <footer class="mt-10 text-center text-sm text-gray-500">
+        Built with <i class="fa-solid fa-heart text-[#f2c75c]"></i> during the
         Tech Journey course.
       </footer>
     </main>
