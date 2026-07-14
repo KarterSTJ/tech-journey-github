@@ -67,18 +67,26 @@
     <main class="bg-[#f8f2ff] w-full max-w-2xl my-12 p-10 rounded-2xl shadow-2xl">
       <!-- ▼▼▼ START EDITING HERE ▼▼▼ -->
 
-      <h1 class="text-4xl font-extrabold text-white">
-        Hi, I'm [Your Name] <span class="inline-block">👋</span>
-      </h1>
-      <p class="text-lg text-[#ece0ff] mt-1">
-        A future developer learning Git, GitHub, and Copilot.
-      </p>
-      <div class="mt-6 rounded-3xl border border-[#FFC62F] bg-white/80 p-4 shadow-sm">
-        <p class="font-semibold text-[#4F2683]">Minnesota Vikings colors:</p>
-        <div class="mt-3 flex flex-wrap gap-2">
-          <span class="rounded-full bg-[#4F2683] px-3 py-1 text-sm font-semibold text-white">Vikings Purple</span>
+      <div class="rounded-3xl border border-[#FFC62F] bg-gradient-to-br from-[#4F2683] to-[#2d1358] p-6 shadow-xl text-white">
+        <div class="flex items-center gap-4">
+          <div class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#FFC62F] bg-white/10">
+            <svg viewBox="0 0 64 64" class="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="28" stroke="#FFC62F" stroke-width="3" />
+              <path d="M22 20L18 30C16.5 35 17 41 20 45L24 50L29 42L26 34L30 28L34 42L39 50L44 45C47 41 47.5 35 46 30L42 20L36 24L32 18L28 24L22 20Z" fill="#FFC62F" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FFC62F]">Minnesota Vikings</p>
+            <h1 class="text-3xl font-extrabold">Skol, Vikings!</h1>
+          </div>
+        </div>
+        <p class="mt-4 text-lg text-[#ece0ff]">
+          A purple-and-gold fan page for the 2026 season.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="rounded-full bg-[#FFC62F] px-3 py-1 text-sm font-semibold text-[#4F2683]">Purple</span>
           <span class="rounded-full bg-[#FFC62F] px-3 py-1 text-sm font-semibold text-[#4F2683]">Gold</span>
-          <span class="rounded-full bg-[#ffffff] px-3 py-1 text-sm font-semibold text-[#4F2683]">White</span>
+          <span class="rounded-full bg-white px-3 py-1 text-sm font-semibold text-[#4F2683]">White</span>
         </div>
       </div>
 
@@ -106,6 +114,35 @@
         Right now I'm learning how developers build and share software with
         GitHub. This page is proof — I wrote it and published it myself!
       </p>
+
+      <div class="mt-8 rounded-3xl border border-[#FFC62F] bg-white p-6 shadow-md">
+        <h2 class="text-2xl font-semibold text-[#4F2683]">
+          2026 Opponent Schedule
+        </h2>
+        <p class="mt-2 text-sm text-[#3b2b5a]">
+          A Vikings-themed look at the teams on the 2026 slate.
+        </p>
+        <div class="mt-4 grid gap-2 sm:grid-cols-2">
+          <div class="rounded-lg bg-[#f7f0ff] px-3 py-2">
+            <span class="font-semibold">Week 1</span> — vs. Chicago Bears
+          </div>
+          <div class="rounded-lg bg-[#f7f0ff] px-3 py-2">
+            <span class="font-semibold">Week 2</span> — at Detroit Lions
+          </div>
+          <div class="rounded-lg bg-[#f7f0ff] px-3 py-2">
+            <span class="font-semibold">Week 3</span> — vs. Green Bay Packers
+          </div>
+          <div class="rounded-lg bg-[#f7f0ff] px-3 py-2">
+            <span class="font-semibold">Week 4</span> — at Chicago Bears
+          </div>
+          <div class="rounded-lg bg-[#f7f0ff] px-3 py-2">
+            <span class="font-semibold">Week 5</span> — vs. Detroit Lions
+          </div>
+          <div class="rounded-lg bg-[#f7f0ff] px-3 py-2">
+            <span class="font-semibold">Week 6</span> — at Green Bay Packers
+          </div>
+        </div>
+      </div>
 
       <!--
         A little interactive button, powered by Alpine.js.
